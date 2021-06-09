@@ -34,7 +34,7 @@ int main()
 	string str;
 	cin >> str;
 
-	cout << "\nRemoved duplicate string: " << removeDuplicates(str) << endl;
+	cout << "\nString after removing duplicate characters: " << removeDuplicates(str) << endl;
 	return 0;
 }
 
