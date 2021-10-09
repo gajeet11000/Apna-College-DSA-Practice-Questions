@@ -38,14 +38,14 @@ void swap(int array[], int i, int j)
 
 void waveSort(int array[], int size)
 {
-	for(int i=1 ; i<size-1 ; i+=2)
+	for(int i=1 ; i<size ; i+=2)
 	{
 		if(array[i] > array[i-1])
 		{
 			swap(array, i, i-1);
 		}
 
-		if(array[i] > array[i+1] && i < size-1)
+		if(i < size-1 && array[i] > array[i+1])
 		{
 			swap(array, i, i+1);
 		}
