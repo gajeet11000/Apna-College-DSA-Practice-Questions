@@ -54,6 +54,41 @@ void insertAtHead(Node *&head, int data)
 	head = new_node;
 }
 
+void deleteHead(Node *&head)
+{
+	Node *to_delete = head;
+	head = head->next;
+
+	delete to_delete;
+}
+
+void deleteElement(Node *&head, int val)
+{
+	if(head == NULL)
+	{
+		return;
+	}
+	else if(head->next == NULL || head->data == val)
+	{
+		deleteHead(head);
+	}
+	else
+	{
+		Node *temp = head;
+
+		while(temp->next->data != val)
+		{
+			temp = temp->next;
+		}
+
+		Node *to_delete = temp->next;
+
+		temp->next = temp->next->next;
+
+		delete to_delete;
+	}
+}
+
 bool search(Node *head, int key)
 {
 	Node* temp = head;
@@ -69,7 +104,7 @@ bool search(Node *head, int key)
 	return false;
 }
 
-void display_list(Node *head)
+void displayList(Node *head)
 {
 	while(head != NULL)
 	{
@@ -92,7 +127,7 @@ int main()
 	insertAtHead(head, 78);
 	insertAtHead(head, 112);
 
-	display_list(head);
+	displayList(head);
 
 	if(search(head, 24))
 	{
@@ -102,6 +137,9 @@ int main()
 	{
 		cout << "Not Found!" << endl;
 	}
+
+	deleteElement(head, 112);
+	displayList(head);
 
 	return 0;
 }
