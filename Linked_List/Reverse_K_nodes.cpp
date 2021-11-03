@@ -99,7 +99,7 @@ int main()
 	insertAtTail(head, 6);
 
 	displayList(head);
-	Node *new_head = reverseKNodes(head);
+	Node *new_head = reverseKNodes(head, 2);
 	displayList(new_head);
 
 	return 0;
