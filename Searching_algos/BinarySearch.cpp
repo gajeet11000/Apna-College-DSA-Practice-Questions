@@ -11,7 +11,7 @@
 using namespace std;
 
 
-int binarySearch(int array[], int length, int key)
+int binarySearchIterative(int array[], int length, int key)
 {
 	int begin_index{0};
 	int end_index{length};
@@ -31,6 +31,23 @@ int binarySearch(int array[], int length, int key)
 			begin_index = middle_index + 1;
 	}
 	return -1;
+}
+
+int binarySearchRecursive(int array[], int begin_index, int end_index, int key)
+{
+	int middle_index = (begin_index + end_index) / 2;
+
+	if(begin_index > end_index)
+		return -1;
+
+	else if(key == array[middle_index])
+		return middle_index;
+
+	else if(key < array[middle_index])
+		return binarySearchRecursive(array, begin_index, middle_index-1, key);
+
+	else
+		return binarySearchRecursive(array, middle_index+1, end_index, key);
 }
 
 void input(int array[], int length)
@@ -58,7 +75,16 @@ int main()
 
 	int result{-1};
 
-	if((result = binarySearch(array, n , key)) != -1)
+	if((result = binarySearchIterative(array, n-1 , key)) != -1)
+	{
+		cout << "\nThe element " << key << " is found at index " << result << endl;
+	}
+	else
+	{
+		cout << "\nThe element " << key << " was not found." << endl;
+	}
+
+	if((result = binarySearchRecursive(array, 0, n-1 , key)) != -1)
 	{
 		cout << "\nThe element " << key << " is found at index " << result << endl;
 	}
