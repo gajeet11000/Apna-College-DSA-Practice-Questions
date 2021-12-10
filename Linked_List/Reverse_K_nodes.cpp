@@ -70,11 +70,8 @@ Node* reverseKNodes(Node *&head, int k)
 		current_ptr = next_ptr;
 	}
 
-	reverseKNodes(next_ptr, k);
-
-	head->next = next_ptr;
-	head = previous_ptr;
-	return head;
+	head->next = reverseKNodes(next_ptr, k);
+	return previous_ptr;
 }
 
 void displayList(Node *head)
@@ -99,7 +96,7 @@ int main()
 	insertAtTail(head, 6);
 
 	displayList(head);
-	Node *new_head = reverseKNodes(head, 2);
+	Node *new_head = reverseKNodes(head, 3);
 	displayList(new_head);
 
 	return 0;
