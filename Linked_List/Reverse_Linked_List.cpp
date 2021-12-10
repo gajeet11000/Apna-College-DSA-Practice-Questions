@@ -89,20 +89,6 @@ void deleteElement(Node *&head, int val)
 	}
 }
 
-bool search(Node *head, int key)
-{
-	Node* temp = head;
-
-	while(temp != NULL)
-	{
-		if(temp->data == key)
-		{
-			return true;
-		}
-		temp = temp->next;
-	}
-	return false;
-}
 
 Node* reverseListIterative(Node *&head)
 {
@@ -152,27 +138,12 @@ int main()
 {
 	Node *head = NULL;
 
-	insertAtTail(head, 60);
-	insertAtTail(head, 100);
-	insertAtTail(head, 101);
-	insertAtTail(head, 110);
-
-	insertAtHead(head, 214);
-	insertAtHead(head, 78);
-	insertAtHead(head, 112);
+	for(int i=0 ; i<5 ; i++)
+	{
+		insertAtTail(head, i+1);
+	}
 
 	displayList(head);
-
-	if(search(head, 24))
-	{
-		cout << "Found!" << endl;
-	}
-	else
-	{
-		cout << "Not Found!" << endl;
-	}
-
-	//deleteElement(head, 112);
 
 	Node* new_head = reverseListRecursive(head);
 
